@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Empleados</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gestión de Empleados</h1>
+      <div id="employee-form">
+        <h2>Agregar Empleado</h2>
+        <input type="text" id="name" placeholder="Nombre" />
+        <input type="text" id="surname" placeholder="Apellido" />
+        <input type="number" id="salary" placeholder="Salario" />
+        <input type="text" id="position" placeholder="Cargo" />
+        <button onclick="addEmployee()">Agregar Empleado</button>
+      </div>
+      <div id="employee-list">
+        <h2>Lista de Empleados</h2>
+        <ul id="employees"></ul>
+        <p id="total-salary">
+          total suma de los salarios <span id="total"></span>
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

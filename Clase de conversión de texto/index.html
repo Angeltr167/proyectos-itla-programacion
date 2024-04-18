@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformador de Texto</title>
+  </head>
+  <body>
+    <h2>Transformador de Texto</h2>
+    <p>Por favor, introduce el texto:</p>
+    <input type="text" id="textoInput" />
+    <button onclick="transformarTexto()">Transformar</button>
+
+    <p id="resultadoCaracteres"></p>
+    <p id="resultadoMayusculas"></p>
+    <p id="resultadoMinusculas"></p>
+    <p id="resultadoPalindromo"></p>
+
+    <script>
+      class TransformadorTexto {
+        constructor(texto) {
+          this.texto = texto;
+        }
+
+        contarCaracteres() {
+          return this.texto.length;
+        }
+
+        convertirMayusculas() {
+          return this.texto.toUpperCase();
+        }
+
+        convertirMinusculas() {
+          return this.texto.toLowerCase();
+        }
+
+        esPalindromo() {
+          const textoSinEspacios = this.texto.replace(/\s/g, "").toLowerCase();
+          const textoReverso = textoSinEspacios.split("").reverse().join("");
+          return textoSinEspacios === textoReverso;
+        }
+      }
+
+      function transformarTexto() {
+        const texto = document.getElementById("textoInput").value;
+        const transformador = new TransformadorTexto(texto);
+
+        document.getElementById("resultadoCaracteres").innerText =
+          "Cantidad de caracteres: " + transformador.contarCaracteres();
+        document.getElementById("resultadoMayusculas").innerText =
+          "En mayúsculas: " + transformador.convertirMayusculas();
+        document.getElementById("resultadoMinusculas").innerText =
+          "En minúsculas: " + transformador.convertirMinusculas();
+        document.getElementById("resultadoPalindromo").innerText =
+          "¿Es palíndromo?: " + (transformador.esPalindromo() ? "Sí" : "No");
+      }
+    </script>
+  </body>
+</html>

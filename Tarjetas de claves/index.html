@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validador de Tarjetas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Validador de Tarjetas</h1>
+
+    <button onclick="generarTarjetas()">Generar Tarjetas</button>
+
+    <div class="tarjetas-container">
+      <!-- Aquí se generarán las tarjetas de verificación -->
+    </div>
+
+    <div class="validar-tarjeta">
+      <h2>Validar Tarjeta</h2>
+      <p id="numero-a-validar">Número a validar:</p>
+      <input
+        type="text"
+        id="input-numero"
+        placeholder="Introduce los 4 dígitos"
+      />
+      <button onclick="validarNumero()">Validar</button>
+      <p id="resultado"></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

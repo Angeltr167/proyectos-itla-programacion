@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>TODO List</h2>
+    <div id="app">
+      <input type="text" id="taskInput" placeholder="Agregar nueva tarea..." />
+      <button onclick="todoList.addTask()">Agregar</button>
+      <ul id="taskList"></ul>
+    </div>
+    <script>
+      class TODOList {
+        constructor() {
+          this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+          this.renderTasks();
+        }
+
+        addTask() {
+          const taskInput = document.getElementById("taskInput");
+          const taskText = taskInput.value.trim();
+          if (taskText) {
+            this.tasks.push({ text: taskText, completed: false });
+            localStorage.setItem("tasks", JSON.stringify(this.tasks));
+            taskInput.value = "";
+            this.renderTasks();
+          }
+        }
+
+        deleteTask(index) {
+          this.tasks.splice(index, 1);
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
+          this.renderTasks();
+        }
+
+        toggleTask(index) {
+          this.tasks[index].completed = !this.tasks[index].completed;
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
+          this.renderTasks();
+        }
+
+        renderTasks() {
+          const taskList = document.getElementById("taskList");
+          taskList.innerHTML = "";
+          this.tasks.forEach((task, index) => {
+            const taskItem = document.createElement("li");
+            taskItem.classList.add("task");
+            if (task.completed) {
+              taskItem.classList.add("completed");
+            }
+            taskItem.innerHTML = `
+                <span>${task.text}</span>
+                <button onclick="todoList.toggleTask(${index})">${
+              task.completed ? "Desmarcar" : "Completar"
+            }</button>
+                <button onclick="todoList.deleteTask(${index})">Eliminar</button>
+            `;
+            taskList.appendChild(taskItem);
+          });
+        }
+      }
+
+      const todoList = new TODOList();
+    </script>
+  </body>
+</html>
