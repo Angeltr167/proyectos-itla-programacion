@@ -65,14 +65,14 @@ class Employee {
     company.listEmployees();
     company.calculateTotalSalary();
   
-    // Clear input fields after adding employee
+   
     document.getElementById('name').value = '';
     document.getElementById('surname').value = '';
     document.getElementById('salary').value = '';
     document.getElementById('position').value = '';
   }
   
-  // Load employees data on page load
+ 
   window.onload = function() {
     company.listEmployees();
     company.calculateTotalSalary();
